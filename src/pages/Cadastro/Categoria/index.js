@@ -20,7 +20,7 @@ const CadastroCategoria = () => {
      
       .then(async (res) => {
         const resposta = await res.json();
-        setCategorias([...categorias, resposta]);
+        setCategorias(...categorias, resposta);
       });
   }, []);
 
