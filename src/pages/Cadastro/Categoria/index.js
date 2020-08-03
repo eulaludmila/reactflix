@@ -17,10 +17,10 @@ const CadastroCategoria = () => {
     const URL = 'http://localhost:3333/categorias';
    
     fetch(URL)
-      .then((res) => res.json())
-      .then((resposta) => {
+     
+      .then(async (res) => {
+        const resposta = await res.json();
         setCategorias([...categorias, resposta]);
-  
       });
   }, []);
 
