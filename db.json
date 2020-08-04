@@ -1,8 +1,10 @@
 {
-    "categorias": {
-        "id": 1,
-        "nome":"Front-End",
-        "descricao":"Uma categoria bacana",
-        "cor":"#6bd1ff"
-    }
+    "categorias": [
+        {
+            "id": 1,
+            "nome": "Front-End",
+            "descricao": "Uma categoria bacana",
+            "cor": "#6bd1ff"
+        }
+    ]
 }

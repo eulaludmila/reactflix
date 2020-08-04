@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+// eslint-disable-next-line import/prefer-default-export
 export const Main = styled.main`
     background-color:var(--black);
     color: var(--white);
@@ -8,4 +9,3 @@ export const Main = styled.main`
     padding-left: 5%;
     padding-right: 5%;
 `;
-
