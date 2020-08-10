@@ -26,6 +26,8 @@ export const Categoria = styled.div`
   border-radius:10px;
   font-weight:bold;
   color: ${(props) => props.cor};
+  margin: 0 5px 15px;
+
 `;
 
 // eslint-disable-next-line no-unused-vars

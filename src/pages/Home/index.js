@@ -1,48 +1,88 @@
-import React from 'react';
-import dadosIniciais from '../../data/dados_iniciais.json'
-import BannerMain from '../../components/BannerMain'
-import Carousel from '../../components/Carousel'
-import Footer from '../../components/Footer';
-import Menu from '../../components/Menu';
+import React, { useEffect, useState } from 'react';
+// import dadosIniciais from '../../data/dados_iniciais.json';
+import BannerMain from '../../components/BannerMain';
+import Carousel from '../../components/Carousel';
+import categoriasRepository from '../../repositories/categorias';
+import PageDefault from '../PageDefault';
 
 function Home() {
+  const [dadosIniciais, setDadosIniciais] = useState([]);
+
+  useEffect(() => {
+    categoriasRepository.getAllWithVideos()
+      .then((categoriaVideos) => {
+        console.log(categoriaVideos);
+        setDadosIniciais(categoriaVideos);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
-    <div style={{ background: "#141414" }}>
-    <Menu />
+    <PageDefault paddingAll={0} style={{ background: '#141414' }}>
 
-    <BannerMain
-      videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-      url={dadosIniciais.categorias[0].videos[0].url}
-      videoDescription={"Não entendeu ainda?"}
-    />
+      {dadosIniciais.length >= 1 && (
+        dadosIniciais.map((dados, index) => (
 
-    <Carousel
-      ignoreFirstVideo
-      category={dadosIniciais.categorias[0]}
-    />
+          index === 0
+            ? (
+              <div key={dados.id}>
+                <BannerMain
+                  videoTitle={dados.videos[0].titulo}
+                  url={dados.videos[0].url}
+                  videoDescription="Não entendeu ainda?"
+                />
 
-    <Carousel
-      category={dadosIniciais.categorias[1]}
-    />
+                <Carousel
+                  ignoreFirstVideo
+                  category={dados}
+                />
+              </div>
+            )
 
-    <Carousel
-      category={dadosIniciais.categorias[2]}
-    />      
+            : (
+              <Carousel
+                key={dados.id}
+                category={dados}
+              />
+            )
+        ))
+      )}
 
-    <Carousel
-      category={dadosIniciais.categorias[3]}
-    />      
+      {/* <BannerMain
+        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
+        url={dadosIniciais.categorias[0].videos[0].url}
+        videoDescription="Não entendeu ainda?"
+      />
 
-    <Carousel
-      category={dadosIniciais.categorias[4]}
-    />      
+      <Carousel
+        ignoreFirstVideo
+        category={dadosIniciais.categorias[0]}
+      />
 
-    <Carousel
-      category={dadosIniciais.categorias[5]}
-    />      
+      <Carousel
+        category={dadosIniciais.categorias[1]}
+      />
 
-    <Footer />
-  </div>
+      <Carousel
+        category={dadosIniciais.categorias[2]}
+      />
+
+      <Carousel
+        category={dadosIniciais.categorias[3]}
+      />
+
+      <Carousel
+        category={dadosIniciais.categorias[4]}
+      />
+
+      <Carousel
+        category={dadosIniciais.categorias[5]}
+      /> */}
+
+      {/* <Footer /> */}
+    </PageDefault>
   );
 }
 

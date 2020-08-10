@@ -56,6 +56,8 @@ const Input = styled.input`
   &:focus {
     border-bottom-color: var(--primary);
   }
+
+  /* Efeito de subir o label do input */
   &:focus:not([type='color']) + ${Label.Text} {
     transform: scale(.6) translateY(-10px);
   }

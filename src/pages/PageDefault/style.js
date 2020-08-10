@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const Main = styled.main`
@@ -8,4 +8,9 @@ export const Main = styled.main`
     padding-top: 50px;
     padding-left: 5%;
     padding-right: 5%;
+
+    /*Verifica se existe o parâmetro */
+    ${({ paddingAll }) => css`
+        padding: ${paddingAll};
+    `}
 `;

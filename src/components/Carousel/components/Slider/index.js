@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import SlickSlider from 'react-slick';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.ul`
   padding: 0;
@@ -17,6 +19,7 @@ const Container = styled.ul`
     transform: initial;
     &:before {
       font-size: 30px;
+      color: ${(props) => props.slickColor}
     }
   }
   
@@ -38,9 +41,8 @@ export const SliderItem = styled.li`
   }
 `;
 
-
-const Slider = ({ children }) => (
-  <Container>
+const Slider = ({ children, slickColor }) => (
+  <Container slickColor={slickColor}>
     <SlickSlider {...{
       dots: false,
       infinite: true,
@@ -55,4 +57,14 @@ const Slider = ({ children }) => (
   </Container>
 );
 
-export default Slider; 
+Slider.defaultProps = {
+
+  slickColor: 'text',
+};
+
+Slider.propTypes = {
+
+  slickColor: PropTypes.string,
+};
+
+export default Slider;

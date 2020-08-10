@@ -1,25 +1,27 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ContainerCategorias, Categoria, Spinner } from './styles';
 import PageDefault from '../../PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import config from '../../../config';
+
+// Custom Hooks
+import useForm from '../../../hooks/userForm';
 
 const CadastroCategoria = () => {
-  const [categorias, setCategorias] = useState([]);
   const valoresIniciais = {
     nome: '',
     descricao: '',
     cor: '#ffffff',
   };
-  const [dadosFormulario, setDadosFormulario] = useState(valoresIniciais);
+  const [categorias, setCategorias] = useState([]);
+
+  const { handleChangeInput, values, handleCleanInput } = useForm(valoresIniciais, categorias, setCategorias);
 
   useEffect(() => {
-    const URL = window.location.hostname.includes('localhost')
-      ? 'http://localhost:3333/categorias'
-      : 'https://euflix.herokuapp.com/categorias';
-
-    fetch(URL)
+    fetch(`${config.URL_BACKEND}/categorias`)
 
       .then(async (res) => {
         const resposta = await res.json();
@@ -27,20 +29,26 @@ const CadastroCategoria = () => {
       });
   }, []);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setDadosFormulario(valoresIniciais);
 
-    setCategorias([...categorias, dadosFormulario]);
-  }
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:3333/categorias'
+      : 'https://euflix.herokuapp.com/categorias';
 
-  function handleChangeInput(target) {
-    const { name, value } = target;
+    await fetch(URL, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      body: JSON.stringify(values),
+    })
 
-    setDadosFormulario({
-      ...dadosFormulario,
-      [name]: value,
-    });
+      .then(() => {
+        handleCleanInput();
+        setCategorias([...categorias, values]);
+      });
   }
 
   return (
@@ -49,11 +57,11 @@ const CadastroCategoria = () => {
 
       <form onSubmit={handleSubmit}>
 
-        <FormField label="Nome da Categoria:" value={dadosFormulario.nome} onChange={(e) => handleChangeInput(e.target)} name="nome" type="text" />
+        <FormField label="Nome da Categoria:" value={values.nome} onChange={(e) => handleChangeInput(e.target)} name="nome" type="text" />
 
-        <FormField as="textarea" type="textarea" label="Descrição:" name="descricao" value={dadosFormulario.descricao} onChange={(e) => handleChangeInput(e.target)} />
+        <FormField as="textarea" type="textarea" label="Descrição:" name="descricao" value={values.descricao} onChange={(e) => handleChangeInput(e.target)} />
 
-        <FormField type="color" label="Cor:" name="cor" value={dadosFormulario.cor} onChange={(e) => handleChangeInput(e.target)} />
+        <FormField type="color" label="Cor:" name="cor" value={values.cor} onChange={(e) => handleChangeInput(e.target)} />
 
         <Button type="submit">
           Cadastrar
