@@ -13,73 +13,61 @@
       "id": 4
     },
     {
-      "nome": "Ludmila",
-      "descricao": "Top",
-      "cor": "#008080",
+      "nome": "teste",
+      "descricao": "gf",
+      "cor": "#ffffff",
       "id": 5
-    },
-    {
-      "nome": "teste 123",
-      "descricao": "fgfdg",
-      "cor": "#804040",
-      "id": 6
-    },
-    {
-      "nome": "tyty",
-      "descricao": "tyty",
-      "cor": "#ff8040",
-      "id": 7
     }
   ],
   "videos": [
     {
       "titulo": "Tudo está conectado em Dark",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=7t3F5Ct71EI"
     },
     {
       "titulo": "Barraca do Beijo",
-      "categoriaId":4,
+      "categoriaId": 4,
       "url": "https://www.youtube.com/watch?v=jCqEDVUAPbU"
     },
     {
       "titulo": "Barraca do Beijo 2",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=2eRmNYQXHPI"
     },
     {
       "titulo": "Atypical",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=6FICNmMUKak"
     },
     {
       "titulo": "Milagre na Cela Nº7",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=G2wPoBy2JQI"
     },
     {
       "titulo": "Good Girls",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=f3flIuy86ao"
     },
     {
       "titulo": "Black Mirror",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=1w8LBG2qbqc"
     },
     {
       "titulo": "Vis a Vis",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=N08KRAPzsHU"
     },
     {
       "titulo": "Interestellar",
-      "categoriaId":3,
+      "categoriaId": 4,
       "url": "https://www.youtube.com/watch?v=frD_IiY_A3E"
     },
     {
       "titulo": "Gattaca",
-      "categoriaId":1,
+      "categoriaId": 1,
       "url": "https://www.youtube.com/watch?v=Dl0tYLbrhhs"
     }
   ]
